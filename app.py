@@ -8,7 +8,7 @@ model = joblib.load("model.pkl")
 preprocess = joblib.load("preprocessing_artifacts.pkl")
 
 
-st.title("Financial Inclusion In Africa")
+st.title("Financial Inclusion In East Africa")
 st.divider()
 st.write("This app uses machine learning to predict individual who are most likely to have or use a bank account. ")
 st.divider()
@@ -32,6 +32,7 @@ education_level = st.selectbox("Education Level", [
     "Tertiary education",
     "Other/Dont know/RTA"
 ])
+
 relationship_with_head = st.selectbox("Relationship with Head", [
     "Head of Household", 
     "Spouse", 
@@ -40,6 +41,7 @@ relationship_with_head = st.selectbox("Relationship with Head", [
     "Other relative", 
     "Other non-relatives"
 ])
+
 marital_status = st.selectbox("Marital Status", [  # Fixed comma-separated option
     "Single/Never Married",
     "Married/Living together",
@@ -47,6 +49,7 @@ marital_status = st.selectbox("Marital Status", [  # Fixed comma-separated optio
     "Divorced/Seperated",
     "Dont know"
 ])
+
 job_type = st.selectbox("Job Type", [
     "Self employed", 
     "Formally employed Private",
