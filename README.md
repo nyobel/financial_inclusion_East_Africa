@@ -83,12 +83,13 @@ spanning the years **2016 to 2018**.
 ```
 
 financial_inclusion_East_Africa/
-
+├── data/
 ├── app.py
 ├── model.pkl
 ├── preprocessing_artifacts.pkl
 ├── requirements.txt
-├── notebook.ipynb
+├── financial_inclusion.html
+├── financial_inclusion_EA.ipynb
 └── README.md
 
 ```
