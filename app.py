@@ -10,7 +10,7 @@ preprocess = joblib.load("preprocessing_artifacts.pkl")
 
 st.title("Financial Inclusion In East Africa")
 st.divider()
-st.write("This app uses machine learning to predict individual who are most likely to have or use a bank account. ")
+st.write("This app uses machine learning to predict individuals who are most likely to have or use a bank account. ")
 st.divider()
 
 
@@ -91,8 +91,8 @@ if st.button("Predict"):
 
     # 2. Map education level
     input_data['education_level'] = input_data['education_level'].map(
-        preprocess['education_mapping']
-    )
+    preprocess['education_mapping']
+    ).fillna(0)
 
     # 3. One-hot encode nominal features
     nominal_features = ['country', 'location_type', 
@@ -101,9 +101,11 @@ if st.button("Predict"):
     encoded_nominal = preprocess['onehot_encoder'].transform(
         input_data[nominal_features]
     )
+
     encoded_df = pd.DataFrame(
         encoded_nominal,
-        columns=preprocess['onehot_encoder'].get_feature_names_out(nominal_features)
+        columns=preprocess['onehot_encoder'].get_feature_names_out(nominal_features),
+        index=input_data.index
     )
 
     # 4. Combine all features
@@ -113,13 +115,24 @@ if st.button("Predict"):
         ], axis=1)
 
     # 5. Ensure correct feature order
-    final_input = final_input[preprocess['feature_names']]
+    final_input = final_input.reindex(columns=preprocess['feature_names'], fill_value=0)
+
+    # Display input summary
+    st.subheader("Input Summary")
+    st.write(input_data)
 
     # Make prediction
     try:
         proba = model.predict_proba(final_input)[0][1]
         st.success(f"Probability of having a bank account: {proba:.2%}")
+
+        if proba >= 0.5:
+            st.success("Likely to have a bank account")
+        else:
+            st.warning("Less likely to have a bank account")
+
     except Exception as e:
         st.error(f"Prediction failed: {str(e)}")
+
 else:
-    st.write("Please fill all values before using the predict button.")
+    st.info("Fill in the details and click Predict.")
