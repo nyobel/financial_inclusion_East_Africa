@@ -84,7 +84,6 @@ spanning the years **2016 to 2018**.
 
 financial_inclusion_East_Africa/
 
-│
 ├── app.py
 ├── model.pkl
 ├── preprocessing_artifacts.pkl
