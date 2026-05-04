@@ -80,7 +80,10 @@ spanning the years **2016 to 2018**.
 ---
 
 **Project Structure**
+```
+
 financial_inclusion_East_Africa/
+
 │
 ├── app.py
 ├── model.pkl
@@ -89,6 +92,7 @@ financial_inclusion_East_Africa/
 ├── notebook.ipynb
 └── README.md
 
+```
 ---
 
 **Future Improvements**
