@@ -4,8 +4,18 @@ import numpy as np
 import pandas as pd
 
 # Load model and preprocessing artifacts
-model = joblib.load("model.pkl")
-preprocess = joblib.load("preprocessing_artifacts.pkl")
+# Load model safely
+@st.cache_resource
+def load_artifacts():
+    model = joblib.load("model.pkl")
+    preprocess = joblib.load("preprocessing_artifacts.pkl")
+    return model, preprocess
+
+try:
+    model, preprocess = load_artifacts()
+except Exception as e:
+    st.error(f"Error loading model: {e}")
+    st.stop()
 
 
 st.title("Financial Inclusion In East Africa")
