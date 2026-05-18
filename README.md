@@ -2,6 +2,8 @@
 
 A machine learning project exploring the factors influencing financial inclusion across East Africa and predicting the likelihood of individuals having a bank account.
 
+🔗 Live App: https://financial-inclusion-east-africa.streamlit.app/
+
 ---
 
 **Problem Statement**
@@ -58,7 +60,7 @@ spanning the years **2016 to 2018**.
 
 ---
 
-**Application**
+**Deployment**
 
 - The model and preprocessing pipeline were saved using `joblib`  
 - A Streamlit application was built for interactive predictions  
@@ -81,7 +83,7 @@ spanning the years **2016 to 2018**.
 
 financial_inclusion_East_Africa/
 ├── data/
-├── app.py
+├── streamlit_app.py
 ├── model.pkl
 ├── preprocessing_artifacts.pkl
 ├── requirements.txt
